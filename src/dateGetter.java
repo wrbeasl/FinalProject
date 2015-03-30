@@ -14,13 +14,17 @@ public class dateGetter {
     public dateGetter() {}
     public String getDate(String ASIN) {
         try {
-            doc = Jsoup.connect("http://www.amazon.com/exec/obidos/ASIN/" + ASIN).get();
+            doc = Jsoup.connect("http://www.amazon.com/exec/obidos/ASIN/" + ASIN).timeout(30000).userAgent("Mozilla/17.0").get();
         }
         catch (java.io.IOException e) {
+        	System.out.println("Error.");
             System.err.println(e);
         }
 
         Elements lines = doc.select("li");
+        
+        
+        System.out.println(lines.isEmpty());
         String rDate = null;
 
         for(Element e: lines) {
