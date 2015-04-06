@@ -47,6 +47,7 @@ public class Parse {
 			
 			} else if(strLine.contains("review/time: ")){
 			
+				// Get the time
 				temp = strLine.substring(space_index+1);
 				
 				java.util.Date time=new java.util.Date((long)Long.parseLong(temp)*1000);
